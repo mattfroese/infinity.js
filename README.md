@@ -51,9 +51,8 @@ Use Case
     });
 
 Filtering
-- filter - filter object or array of filter objects, overrides if field already exists, appends filter if it does not.
+- filter - filter object or array of filter objects, overrides if field already exists, appends filter if it does not. Returns current filters.
 - clearFilter - clears all filters
-- listFilters - returns the filterObjects object defined above.
 
 Sorting
 - sort - change sortObject to match the given object
