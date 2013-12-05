@@ -1,4 +1,4 @@
-infinity.js
+﻿infinity.js
 ===========
 
 INFINITY API v0.1
@@ -8,7 +8,7 @@ INFINITY API v0.1
     	url: ‘/list/of/data/in/json’,
     	number: 50,
     	page: 0,
-    	unloadUnseen: false,
+    	unloadUnseen: false, // does nothing.
     	filter: ‘Some Name’,
     	sorting: ‘SomeField’,
     	direction: ‘asc’,
@@ -34,7 +34,7 @@ Expected Server Code
     data(filterObjects, sortObject, page = 0, perPage = 50)
     filterObjects = [{
     	field: ‘field’,
-    	value: ‘val%’
+    	value: ‘val’
     }]
     sortObject = {
     	field: ‘field’,
@@ -56,3 +56,9 @@ Filtering
 
 Sorting
 - sort - change sortObject to match the given object
+
+## Events
+
+- `infinitySortChange`: After the `sort()` function is called.
+- `infinityFilterChange`: After the `filter()` function is called.
+- `
