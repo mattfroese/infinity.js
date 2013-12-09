@@ -1,0 +1,37 @@
+<button id='f'>Filter E's</button>
+<table>
+    <thead>
+        <tr>
+            <th>Status</th>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody id="target">
+
+    </tbody>
+</table>
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="/infinity.js" type="text/javascript"></script>
+<script>
+    $(function() {
+        $('#target').infinity({
+            url: '/api',
+            template: function (item) {
+                return '<tr>' +
+                    '<td>' + item.n + '</td>' +
+                    '<td>' + item.title + '</td>' +
+                    '</tr>';
+            }
+        }).fetch();
+
+        $('#target').on('infinityAppend', function (e, page, amount) {
+            if(amount > 0)
+            $(this).append("<hr>");
+        })
+
+        $('#f').click(function(e){
+            infinity.filter({field:'title',value:'E'})
+        })
+    })
+</script>

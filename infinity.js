@@ -45,22 +45,26 @@
 	}
 
 	infinity.prototype.filter = function (object) {
-    if(object===undefined) return this.options.filters
+    	var self = this;
+    	if(object===undefined) return this.options.filters
+    	if(typeof object == 'array')
+			$.each(object, function(i, item) {
+				self.options._filters[item.field] = item.value;
+			}); 
+		else
+			self.options._filters[object.field] = object.value;
 
-		var self = this;
-		$.each(object, function(i, item) {
-			self.options._filters[item.field] = item.value;
-		});
 		// convert
 		self.options.filters = [];
-		$.each(Object.keys(self.options._filters), function(i, item) {
+		return $.each(Object.keys(self.options._filters), function(i, item) {
 			self.options.filters.push({
 				field : item,
 				value : self.options._filters[item]
 			})
-		});
-		self.dom.trigger('infinityFilterChange', [self.options.filters]);
-		return self.options.filters;
+		}).promise().done(function() {
+			self.dom.trigger('infinityFilterChange', [self.options.filters]);
+			return self.options.filters;	
+		}).resolve();
 	}
 
 	infinity.prototype.clearFilter = function() {
