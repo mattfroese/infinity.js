@@ -18,7 +18,7 @@ INFINITY API v0.1
     });
     $(identifier).infinity().sort({
     	field: “id”,
-    	direction: ‘asc’
+    	direction: “asc”
     });
     $(identifier).infinity().filter([{
     	field: “username”,
@@ -61,4 +61,7 @@ Sorting
 
 - `infinitySortChange`: After the `sort()` function is called.
 - `infinityFilterChange`: After the `filter()` function is called.
-- `
+- `infinityAppend`: Triggered after page is attempted to be extended. Passes the _page number_ and the _number of pages inserted_ into any callbacks.
+- `infinityFailure`: Ajax request failed.
+- `infinitySuccess`: Ajax request succeded.
+- `infinityComplete`: All new items have been inserted on the page. Called even if 0 items were inserted.

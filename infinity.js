@@ -1,6 +1,6 @@
 /* ∞ grid view
  *
-  *
+ *
  */
 (function( $ ) {
 
