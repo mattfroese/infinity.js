@@ -56,19 +56,18 @@
 
 		// convert
 		self.options.filters = [];
-		return $.each(Object.keys(self.options._filters), function(i, item) {
+		$.each(Object.keys(self.options._filters), function(i, item) {
 			self.options.filters.push({
 				field : item,
 				value : self.options._filters[item]
 			})
-		}).promise().done(function() {
-			self.dom.trigger('infinityFilterChange', [self.options.filters]);
-			return self.options.filters;	
-		}).resolve();
+		});
+		self.dom.trigger('infinityFilterChange', [self.options.filters]);
+		return self.options.filters;	
 	}
 
 	infinity.prototype.clearFilter = function() {
-	  this.options._filters = {};
+	  	this.options._filters = {};
 		this.options.filters = [];
 		self.dom.trigger('infinityFilterChange', [self.options.filters]);
 		return this.options.filters;
